@@ -1,0 +1,179 @@
+:root {
+    --task-bg: rgba(155, 155, 155, .4);
+}
+
+.task-form,
+.task-list,
+.modal-container {
+    background-color: var(--task-bg);
+    border-radius: 1rem;
+    padding: 1rem 1.2rem;
+    overflow: auto;
+}
+
+h1 {
+    font-size: 1.7rem;
+    margin: 0;
+    color: white;
+    display: inline;
+}
+
+.task-form {
+    grid-row: 2 / 4;
+    grid-column: 2 / 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.task-form .white-button {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.inputs {
+    display: flex;
+    /* align-self: flex-end; */
+    width: 100%;
+}
+
+.task-list {
+    grid-row: 4 / 11;
+    grid-column: 2 / 12;
+}
+
+.task-list ul {
+    padding-left: 0;
+    margin-top: 0;
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+.task {
+    margin: 0.5rem;
+    border: .0625rem solid rgb(255, 255, 255);
+    border-radius: .5rem;
+    padding: .1rem 1rem;
+    position: relative;
+    opacity: 0.9;
+    min-width: 1.875rem;
+    animation: task .5s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes task {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.task:hover .task-action-container,
+.task:hover .task-action-container-remove {
+    opacity: initial;
+    transition: opacity 0.3s;
+}
+
+.finished-task {
+    opacity: 0.3;
+    transition: opacity 0.5s;
+    transform: rotate(2deg);
+    transition: transform 0.5s;
+}
+
+.task p {
+    color: white;
+    font-size: 1.3rem;
+    word-break: break-all;
+    text-align: center;
+}
+
+.task-action-container,
+.task-action-container-remove {
+    position: absolute;
+    top: -0.625rem;
+    right: -0.9375rem;
+    display: flex;
+    opacity: 0;
+    z-index: 10;
+}
+
+.task-action-container-remove {
+    top: inherit;
+    bottom: -0.625rem;
+}
+
+.task-action-container button,
+.task-action-container-remove button,
+.task-action-container-small button  {
+    color: white;
+    border: .0625rem solid white;
+    border-radius: .4375rem;
+    margin: 0 .0625rem;
+    cursor: pointer;
+}
+
+.remove {
+    background-color: hsla(0, 55%, 46%, 0.7);
+}
+
+.done {
+    background-color: hsla(103, 55%, 46%, 0.7);
+}
+
+.edit {
+    background-color: hsla(241, 55%, 46%, 0.7);
+}
+
+.task-action-container-small {
+    display: none;
+}
+
+@media only screen and (max-width: 37.5rem) {
+    .task-form h1 {
+        font-size: 1.1rem;
+    }
+
+    .task p {
+        font-size: 1rem;
+    }
+
+    .task {
+        margin: .3rem .4rem;
+        padding: 0 .5rem;
+        display: flex;
+    }
+    
+    .task-action-container-small {
+        display: flex;
+        flex-wrap: nowrap;
+        margin: auto 0;
+
+    }
+
+    .task-action-container-small button{
+        padding: 0.4rem;
+        margin-left: 0.4rem;
+        margin-right: 0;
+    }
+
+    .remove {
+        background-color: hsl(0, 55%, 46%);
+    }
+    
+    .done {
+        background-color: hsl(103, 55%, 46%);
+    }
+    
+    .edit {
+        background-color: hsl(241, 55%, 46%);
+    }
+
+    .task-action-container, .task-action-container-remove {
+        display: none;
+    }
+}
